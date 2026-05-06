@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Youthful Medical Spa — Jacksonville</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#fffff8;color:#1a1500;line-height:1.6;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:none}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes scaleIn{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:none}}
+@keyframes slideLft{from{opacity:0;transform:translateX(-28px)}to{opacity:1;transform:none}}
+@keyframes slideRgt{from{opacity:0;transform:translateX(28px)}to{opacity:1;transform:none}}
+@keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(161,98,7,.5)}60%{box-shadow:0 0 0 18px rgba(161,98,7,0)}}
+@keyframes gradBG{0%,100%{background-position:0% 60%}50%{background-position:100% 40%}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes ring-expand{0%{transform:scale(1);opacity:.7}100%{transform:scale(2.6);opacity:0}}
+@keyframes glow-pulse{0%,100%{opacity:.4}50%{opacity:.8}}
+.animate{opacity:0;transform:translateY(22px);transition:opacity .75s cubic-bezier(.16,1,.3,1),transform .75s cubic-bezier(.16,1,.3,1)}
+.animate.visible{opacity:1;transform:none}
+.animate.from-left{transform:translateX(-22px)}
+.animate.from-right{transform:translateX(22px)}
+.animate.scale-in{transform:scale(.94);opacity:0}
+.animate.from-left.visible,.animate.from-right.visible,.animate.scale-in.visible{transform:none;opacity:1}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#a16207;margin-bottom:12px;display:block}
+.section-h2{font-size:clamp(26px,4.5vw,44px);font-weight:800;line-height:1.1;margin-bottom:18px;color:#1a1500;letter-spacing:-.03em}
+.section-sub{font-size:16px;opacity:.6;max-width:540px;line-height:1.75;margin-bottom:44px;color:#1a1500}
+.accent-line{width:44px;height:3px;background:#a16207;border-radius:2px;margin-bottom:16px}
+.gradient-text{background:linear-gradient(135deg,#a16207,#1a1500);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.faq-q{width:100%;background:none;border:none;font-size:15px;font-weight:600;padding:20px 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;font-family:inherit;text-align:left;color:#1a1500}
+.faq-icon{font-size:20px;flex-shrink:0;transition:transform .28s ease;font-weight:400;line-height:1;color:#a16207}
+.faq-item.open .faq-icon{transform:rotate(45deg)}
+.faq-a{font-size:14px;line-height:1.8;max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s ease;padding:0;opacity:.7;color:#1a1500}
+.faq-item.open .faq-a{max-height:280px;padding:0 0 20px}
+.faq-item{border-bottom:1px solid rgba(26,21,0,.1)}
+.bform{max-width:700px;margin:0 auto;background:#fffde8;border:1px solid rgba(26,21,0,.1);border-radius:20px;padding:48px;text-align:left;box-shadow:0 2px 8px rgba(0,0,0,.06),0 12px 32px rgba(0,0,0,.08)}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.fg{display:flex;flex-direction:column;gap:7px;margin-bottom:14px}
+label{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;opacity:.75;color:#1a1500}
+input,select,textarea{padding:12px 16px;border:1.5px solid rgba(26,21,0,.12);border-radius:10px;font-size:14px;font-family:inherit;outline:none;width:100%;transition:border-color .2s,box-shadow .2s;background:rgba(26,21,0,.03);color:#1a1500}
+input:focus,select:focus,textarea:focus{border-color:#a16207;box-shadow:0 0 0 3px rgba(161,98,7,.12)}
+.subtn{width:100%;border:none;padding:16px;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;margin-top:6px;font-family:inherit;transition:opacity .2s,transform .15s;background:#a16207;color:#fffff8}
+.subtn:hover{opacity:.88;transform:translateY(-1px)}
+#sticky-cta{position:fixed;bottom:0;left:0;right:0;z-index:9998;display:flex;opacity:0;transform:translateY(100%);transition:opacity .35s ease,transform .35s ease;pointer-events:none}
+#sticky-cta a{flex:1;padding:16px;text-align:center;font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;gap:8px}
+.mob-float{display:none;position:fixed;bottom:80px;right:20px;z-index:9997;width:56px;height:56px;border-radius:50%;background:#a16207;box-shadow:0 4px 24px rgba(161,98,7,.5);align-items:center;justify-content:center;font-size:22px;animation:pulse 3s ease-out infinite}
+.cursor-spotlight{position:fixed;width:480px;height:480px;border-radius:50%;pointer-events:none;z-index:1;background:radial-gradient(circle,rgba(161,98,7,.06) 0%,transparent 70%);transform:translate(-50%,-50%);transition:opacity .5s ease;opacity:0;will-change:left,top}
+.acard,.gcard,.spcard,.edwhy,.stwy,.schip,.mwhy,.bcard,.gwhy{position:relative;overflow:hidden}
+.acard::after,.gcard::after,.spcard::after,.edwhy::after,.schip::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(161,98,7,.12) 50%,transparent 65%);transform:translateX(-150%) skewX(-15deg);transition:transform .65s ease;pointer-events:none;z-index:2}
+.acard:hover::after,.gcard:hover::after,.spcard:hover::after,.edwhy:hover::after,.schip:hover::after{transform:translateX(200%) skewX(-15deg)}
+.tilt-card{transition:transform .3s ease,box-shadow .3s ease;will-change:transform}
+@media(max-width:768px){
+  .mob-float{display:flex}
+  #sticky-cta{font-size:13px;pointer-events:auto}
+  .frow{grid-template-columns:1fr}
+  .bform{padding:28px 18px}
+  body{padding-bottom:80px}
+  .cursor-spotlight{display:none}
+}
+body{font-family:'DM Sans',ui-sans-serif,system-ui,sans-serif}
+nav{position:sticky;top:0;z-index:999;display:flex;justify-content:space-between;align-items:center;padding:0 clamp(20px,5vw,60px);height:64px;background:rgba(255,255,248,.97);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(26,21,0,.1)}
+.nlogo{font-size:15px;font-weight:700;color:#1a1500;letter-spacing:-.01em;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ntag{font-family:'DM Mono',monospace;font-size:10px;color:#a16207;border:1px solid rgba(161,98,7,.3);padding:3px 8px;border-radius:3px;margin-left:10px;letter-spacing:.04em}
+.nright{display:flex;gap:10px;align-items:center}
+.nbtn{background:#a16207;color:#fffff8;padding:8px 18px;border-radius:4px;font-weight:600;font-size:13px;font-family:'DM Sans',sans-serif;transition:opacity .2s}
+.nbtn:hover{opacity:.88}
+.nghost{border:1px solid rgba(26,21,0,.1);color:#1a1500;padding:7px 16px;border-radius:4px;font-size:13px;font-family:'DM Sans',sans-serif;transition:border-color .2s}
+.nghost:hover{border-color:#a16207}
+.hero{min-height:85vh;display:grid;grid-template-columns:1fr;align-items:center;padding:120px clamp(20px,6vw,80px) 80px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(161,98,7,.12) 1px,transparent 1px);background-size:28px 28px;pointer-events:none}
+.hero-inner{position:relative;z-index:1;max-width:720px}
+.hero-tag{font-family:'DM Mono',monospace;font-size:11px;color:#a16207;letter-spacing:.08em;margin-bottom:20px;display:block;animation:fadeIn .6s both}
+.hero-h1{font-size:clamp(34px,6vw,72px);font-weight:700;line-height:1.06;letter-spacing:-.03em;margin-bottom:18px;color:#1a1500;animation:fadeUp .7s .1s both}
+.hero-sub{font-size:clamp(14px,1.8vw,17px);color:rgba(26,21,0,.55);max-width:540px;margin-bottom:36px;line-height:1.75;animation:fadeUp .7s .2s both}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;animation:fadeUp .7s .3s both}
+.hbtn-p{background:#a16207;color:#fffff8;padding:14px 36px;border-radius:6px;font-size:14px;font-weight:600;display:inline-block;box-shadow:0 4px 20px rgba(161,98,7,.3);transition:opacity .2s,transform .2s}
+.hbtn-p:hover{opacity:.9;transform:translateY(-1px)}
+.hbtn-s{border:1px solid rgba(26,21,0,.1);color:#1a1500;padding:13px 30px;border-radius:6px;font-size:14px;display:inline-block;transition:border-color .2s}
+.hbtn-s:hover{border-color:#a16207}
+.ptable{border:1px solid rgba(26,21,0,.1);border-radius:8px;overflow:hidden}
+.prow{display:grid;grid-template-columns:52px 1fr 2fr auto;align-items:center;gap:0;padding:18px 20px;border-bottom:1px solid rgba(26,21,0,.1)}
+.prow:last-child{border-bottom:none}
+.prow-icon{font-size:20px;text-align:center}
+.pspec{display:grid;grid-template-columns:1fr 2fr;align-items:center;gap:0;padding:16px 20px;border-bottom:1px solid rgba(26,21,0,.1)}
+.pspec:last-child{border-bottom:none}
+.pspec-label{padding-right:16px;border-right:1px solid rgba(26,21,0,.1)}
+.pspec-val{padding-left:20px}
+.pterm{padding:20px 0;border-bottom:1px solid rgba(26,21,0,.1)}
+.pterm:last-child{border-bottom:none}
+.csec{text-align:center;padding:80px 24px;background:#f7f2d8}
+.big-phone{font-family:'DM Mono',monospace;font-size:clamp(22px,5vw,52px);font-weight:400;color:#a16207;display:block;margin:16px 0 10px;letter-spacing:-.01em;transition:opacity .2s}
+.big-phone:hover{opacity:.75}
+footer{background:#fffde8;color:rgba(26,21,0,.55);text-align:center;padding:24px;font-size:12px;border-top:1px solid rgba(26,21,0,.1);font-family:'DM Mono',monospace}
+@media(max-width:768px){
+  .nghost{display:none}.ntag{display:none}
+  .prow{grid-template-columns:36px 1fr;gap:8px}.prow-desc,.prow-cta{display:none}
+  .pspec{grid-template-columns:1fr}.pspec-label{border-right:none;border-bottom:1px solid rgba(26,21,0,.1);padding-bottom:8px;margin-bottom:8px}
+}
+</style>
+</head>
+<body>
+<nav>
+  <div style="display:flex;align-items:center">
+    <div class="nlogo">Youthful Medical Spa</div>
+    <span class="ntag">med-spa</span>
+  </div>
+  <div class="nright">
+    <a href="#booking" class="nbtn">Book Now</a>
+    <a href="tel:9042736286" class="nghost">&#128222; (904) 273-6286</a>
+  </div>
+</nav>
+<div id="sticky-cta">
+  <a href="tel:9042736286" style="background:#a16207;color:#fffff8">&#128222; Call Now</a>
+  <a href="#booking" style="background:#fffde8;color:#a16207;border-top:1px solid rgba(26,21,0,.1)">&#128197; Book</a>
+</div>
+<a href="tel:9042736286" class="mob-float">&#128222;</a>
+<div class="hero">
+  <div class="hero-inner">
+    <span class="hero-tag">// Jacksonville · Licensed &amp; Insured</span>
+    <h1 class="hero-h1">Beautiful Results,<br><span style="color:#a16207">Not Guesswork.</span></h1>
+    <p class="hero-sub">Medical aesthetics tailored for you — Jacksonville's trusted med spa.</p>
+    <div class="hero-btns">
+      <a href="#booking" class="hbtn-p">&#128197; Book Appointment</a>
+      <a href="tel:9042736286" class="hbtn-s">&#128222; (904) 273-6286</a>
+    </div>
+    <div style="display:inline-flex;align-items:center;gap:8px;font-family:'DM Mono',monospace;font-size:12px;background:rgba(161,98,7,.08);border:1px solid rgba(161,98,7,.2);padding:8px 18px;border-radius:4px;margin-top:24px;animation:fadeIn .8s .5s both;color:#1a1500"><span style="color:#a16207">&#9733;</span> 4.7/5 &nbsp;|&nbsp; 639 reviews &nbsp;|&nbsp; <span style="color:#a16207">Jacksonville</span></div>
+  </div>
+</div>
+<div id="services" style="padding:80px 24px;border-top:1px solid rgba(26,21,0,.1)">
+  <div style="max-width:1000px;margin:0 auto">
+    <span class="eyebrow animate">Services</span>
+    <h2 class="section-h2 animate">What We Offer</h2>
+    <div class="ptable"><div class="prow animate" style="animation-delay:0.00s;background:rgba(26,21,0,.03)"><div class="prow-icon">✨</div><div class="prow-name"><h3 style="font-size:15px;font-weight:700;color:#1a1500;letter-spacing:-.01em">Botox Injections</h3></div><div class="prow-desc"><p style="font-size:13px;color:rgba(26,21,0,.55);line-height:1.6">Precision injections by certified providers for smooth, natural-looking results.</p></div><div class="prow-cta"><a href="#booking" style="font-family:'DM Mono',monospace;font-size:12px;font-weight:400;color:#a16207;border:1px solid rgba(161,98,7,.3);padding:6px 14px;border-radius:4px;white-space:nowrap;transition:background .2s">→ Book</a></div></div><div class="prow animate" style="animation-delay:0.06s;background:transparent"><div class="prow-icon">💉</div><div class="prow-name"><h3 style="font-size:15px;font-weight:700;color:#1a1500;letter-spacing:-.01em">Laser Hair Removal</h3></div><div class="prow-desc"><p style="font-size:13px;color:rgba(26,21,0,.55);line-height:1.6">Restore volume and contour with expert filler placement and an artistic eye.</p></div><div class="prow-cta"><a href="#booking" style="font-family:'DM Mono',monospace;font-size:12px;font-weight:400;color:#a16207;border:1px solid rgba(161,98,7,.3);padding:6px 14px;border-radius:4px;white-space:nowrap;transition:background .2s">→ Book</a></div></div><div class="prow animate" style="animation-delay:0.12s;background:rgba(26,21,0,.03)"><div class="prow-icon">🔬</div><div class="prow-name"><h3 style="font-size:15px;font-weight:700;color:#1a1500;letter-spacing:-.01em">Chemical Peels</h3></div><div class="prow-desc"><p style="font-size:13px;color:rgba(26,21,0,.55);line-height:1.6">Hair removal, skin resurfacing, and pigmentation correction with medical-grade lasers.</p></div><div class="prow-cta"><a href="#booking" style="font-family:'DM Mono',monospace;font-size:12px;font-weight:400;color:#a16207;border:1px solid rgba(161,98,7,.3);padding:6px 14px;border-radius:4px;white-space:nowrap;transition:background .2s">→ Book</a></div></div><div class="prow animate" style="animation-delay:0.18s;background:transparent"><div class="prow-icon">🌟</div><div class="prow-name"><h3 style="font-size:15px;font-weight:700;color:#1a1500;letter-spacing:-.01em">Microneedling</h3></div><div class="prow-desc"><p style="font-size:13px;color:rgba(26,21,0,.55);line-height:1.6">Medical-grade treatments for refreshed, radiant, balanced skin.</p></div><div class="prow-cta"><a href="#booking" style="font-family:'DM Mono',monospace;font-size:12px;font-weight:400;color:#a16207;border:1px solid rgba(161,98,7,.3);padding:6px 14px;border-radius:4px;white-space:nowrap;transition:background .2s">→ Book</a></div></div><div class="prow animate" style="animation-delay:0.24s;background:rgba(26,21,0,.03)"><div class="prow-icon">💎</div><div class="prow-name"><h3 style="font-size:15px;font-weight:700;color:#1a1500;letter-spacing:-.01em">IV Vitamin Therapy</h3></div><div class="prow-desc"><p style="font-size:13px;color:rgba(26,21,0,.55);line-height:1.6">Non-invasive sculpting and skin tightening tailored to your body goals.</p></div><div class="prow-cta"><a href="#booking" style="font-family:'DM Mono',monospace;font-size:12px;font-weight:400;color:#a16207;border:1px solid rgba(161,98,7,.3);padding:6px 14px;border-radius:4px;white-space:nowrap;transition:background .2s">→ Book</a></div></div><div class="prow animate" style="animation-delay:0.30s;background:transparent"><div class="prow-icon">📋</div><div class="prow-name"><h3 style="font-size:15px;font-weight:700;color:#1a1500;letter-spacing:-.01em">Body Contouring</h3></div><div class="prow-desc"><p style="font-size:13px;color:rgba(26,21,0,.55);line-height:1.6">Personalized aesthetic planning with a certified provider. No pressure, just clarity.</p></div><div class="prow-cta"><a href="#booking" style="font-family:'DM Mono',monospace;font-size:12px;font-weight:400;color:#a16207;border:1px solid rgba(161,98,7,.3);padding:6px 14px;border-radius:4px;white-space:nowrap;transition:background .2s">→ Book</a></div></div></div>
+  </div>
+</div>
+<div style="padding:80px 24px;background:#fffde8;border-top:1px solid rgba(26,21,0,.1)" id="why">
+  <div style="max-width:900px;margin:0 auto">
+    <span class="eyebrow animate">Specifications</span>
+    <h2 class="section-h2 animate">Why Choose Us</h2>
+    <div style="border:1px solid rgba(26,21,0,.1);border-radius:8px;overflow:hidden"><div class="pspec animate" style="animation-delay:0.00s;background:rgba(26,21,0,.03)"><div class="pspec-label"><span style="font-family:'DM Mono',monospace;font-size:11px;color:#a16207;letter-spacing:.04em">🏥 Board-Certified Providers</span></div><div class="pspec-val"><p style="font-size:13px;color:rgba(26,21,0,.55);line-height:1.6">Only trained, certified providers perform treatments — never techs alone.</p></div></div><div class="pspec animate" style="animation-delay:0.07s;background:transparent"><div class="pspec-label"><span style="font-family:'DM Mono',monospace;font-size:11px;color:#a16207;letter-spacing:.04em">💊 Medical-Grade Products</span></div><div class="pspec-val"><p style="font-size:13px;color:rgba(26,21,0,.55);line-height:1.6">We use only FDA-approved, medical-grade products and equipment.</p></div></div><div class="pspec animate" style="animation-delay:0.14s;background:rgba(26,21,0,.03)"><div class="pspec-label"><span style="font-family:'DM Mono',monospace;font-size:11px;color:#a16207;letter-spacing:.04em">📋 Free Consultation</span></div><div class="pspec-val"><p style="font-size:13px;color:rgba(26,21,0,.55);line-height:1.6">Start with a no-obligation consultation to build your personalized plan.</p></div></div><div class="pspec animate" style="animation-delay:0.21s;background:transparent"><div class="pspec-label"><span style="font-family:'DM Mono',monospace;font-size:11px;color:#a16207;letter-spacing:.04em">✨ Natural Results</span></div><div class="pspec-val"><p style="font-size:13px;color:rgba(26,21,0,.55);line-height:1.6">Our goal is enhancement, not transformation. You still look like you.</p></div></div></div>
+  </div>
+</div>
+<div style="padding:80px 24px;border-top:1px solid rgba(26,21,0,.1)" id="process">
+  <div style="max-width:600px;margin:0 auto">
+    <span class="eyebrow animate">Sequence</span>
+    <h2 class="section-h2 animate">How It Works</h2>
+    <div><div class="pterm animate" style="animation-delay:0.00s"><div style="display:flex;align-items:flex-start;gap:16px"><span style="font-family:'DM Mono',monospace;font-size:13px;color:#a16207;flex-shrink:0;padding-top:2px">[01]</span><div><strong style="font-size:15px;font-weight:700;display:block;margin-bottom:5px;color:#1a1500">Book a Consultation</strong><p style="font-size:13px;line-height:1.7;color:rgba(26,21,0,.55)">Schedule your free consultation. We listen to your goals and assess your needs.</p></div></div></div><div class="pterm animate" style="animation-delay:0.10s"><div style="display:flex;align-items:flex-start;gap:16px"><span style="font-family:'DM Mono',monospace;font-size:13px;color:#a16207;flex-shrink:0;padding-top:2px">[02]</span><div><strong style="font-size:15px;font-weight:700;display:block;margin-bottom:5px;color:#1a1500">Personalized Treatment Plan</strong><p style="font-size:13px;line-height:1.7;color:rgba(26,21,0,.55)">We design a treatment plan around your goals, skin type, and timeline.</p></div></div></div><div class="pterm animate" style="animation-delay:0.20s"><div style="display:flex;align-items:flex-start;gap:16px"><span style="font-family:'DM Mono',monospace;font-size:13px;color:#a16207;flex-shrink:0;padding-top:2px">[03]</span><div><strong style="font-size:15px;font-weight:700;display:block;margin-bottom:5px;color:#1a1500">Leave Refreshed</strong><p style="font-size:13px;line-height:1.7;color:rgba(26,21,0,.55)">Professional, natural-looking results in a comfortable clinical environment.</p></div></div></div></div>
+  </div>
+</div>
+<section style="background:#fffde8;padding:90px 24px;overflow:hidden" id="area">
+<div style="max-width:1060px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center">
+  <div>
+    <span class="eyebrow animate">Service Coverage</span>
+    <h2 class="section-h2 animate">Proudly Serving<br><span style="color:#a16207">Jacksonville</span></h2>
+    <p class="animate" style="font-size:15px;opacity:.62;line-height:1.8;color:#1a1500;margin-bottom:28px">Professional, on-time service across Jacksonville and all surrounding communities. Local experts — not a call center.</p>
+    <div class="animate" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px"><span style="display:inline-block;padding:6px 14px;background:rgba(161,98,7,.1);border:1px solid rgba(161,98,7,.2);border-radius:20px;font-size:12px;font-weight:600;color:#a16207;margin:4px">Jacksonville</span><span style="display:inline-block;padding:6px 14px;background:rgba(161,98,7,.1);border:1px solid rgba(161,98,7,.2);border-radius:20px;font-size:12px;font-weight:600;color:#a16207;margin:4px">Fleming Island</span><span style="display:inline-block;padding:6px 14px;background:rgba(161,98,7,.1);border:1px solid rgba(161,98,7,.2);border-radius:20px;font-size:12px;font-weight:600;color:#a16207;margin:4px">Orange Park</span><span style="display:inline-block;padding:6px 14px;background:rgba(161,98,7,.1);border:1px solid rgba(161,98,7,.2);border-radius:20px;font-size:12px;font-weight:600;color:#a16207;margin:4px">Ponte Vedra</span><span style="display:inline-block;padding:6px 14px;background:rgba(161,98,7,.1);border:1px solid rgba(161,98,7,.2);border-radius:20px;font-size:12px;font-weight:600;color:#a16207;margin:4px">St. Augustine</span></div>
+    
+  </div>
+  <div class="animate scale-in" style="display:flex;align-items:center;justify-content:center">
+    <div style="position:relative;width:220px;height:220px">
+      <div style="position:absolute;inset:0;border-radius:50%;border:1.5px solid #a16207;animation:ring-expand 3s ease-out infinite;opacity:.7"></div>
+      <div style="position:absolute;inset:0;border-radius:50%;border:1.5px solid #a16207;animation:ring-expand 3s ease-out 1s infinite;opacity:.7"></div>
+      <div style="position:absolute;inset:0;border-radius:50%;border:1.5px solid #a16207;animation:ring-expand 3s ease-out 2s infinite;opacity:.7"></div>
+      <div style="position:absolute;inset:30px;border-radius:50%;background:rgba(161,98,7,.06);border:1.5px solid rgba(161,98,7,.2)"></div>
+      <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px">
+        <div style="font-size:32px;animation:float 4s ease-in-out infinite">&#128205;</div>
+        <div style="font-size:14px;font-weight:800;color:#a16207;letter-spacing:-.01em;text-align:center;max-width:120px;line-height:1.2">Jacksonville</div>
+        <div style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.45;color:#1a1500">Service Area</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+<style>
+@keyframes ring-expand{0%{transform:scale(1);opacity:.7}100%{transform:scale(2.8);opacity:0}}
+</style>
+<section style="background:#fffff8;padding:90px 24px" id="reviews"><div style="max-width:1000px;margin:0 auto"><p class="eyebrow animate" style="color:#a16207">What Customers Say</p><h2 class="section-h2 animate" style="color:#1a1500">Google Reviews</h2><div style="display:flex;align-items:center;gap:16px;margin-bottom:16px;flex-wrap:wrap" class="animate"><span style="color:#a16207;font-size:22px;letter-spacing:2px">★★★★★</span><span style="font-size:18px;font-weight:700;color:#1a1500">4.7/5</span><span style="opacity:.4">·</span><span style="color:rgba(26,21,0,.72)">639 reviews</span><a href="https://www.google.com/search?q=Youthful+Medical+Spa" target="_blank" style="color:#a16207;font-size:13px;border:1px solid #a16207;padding:4px 14px;border-radius:20px;margin-left:auto">See on Google &#8599;</a></div><div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:48px" class="animate"><span style="background:rgba(161,98,7,.08);border:1px solid rgba(161,98,7,.15);padding:4px 12px;border-radius:20px;font-size:12px;color:#a16207">natural results</span> <span style="background:rgba(161,98,7,.08);border:1px solid rgba(161,98,7,.15);padding:4px 12px;border-radius:20px;font-size:12px;color:#a16207">attentive staff</span> <span style="background:rgba(161,98,7,.08);border:1px solid rgba(161,98,7,.15);padding:4px 12px;border-radius:20px;font-size:12px;color:#a16207">comfortable environment</span> <span style="background:rgba(161,98,7,.08);border:1px solid rgba(161,98,7,.15);padding:4px 12px;border-radius:20px;font-size:12px;color:#a16207">excellent technique</span></div><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px"><div class="rcard animate" style="background:#fffde8;border:1px solid rgba(26,21,0,.1);border-radius:16px;padding:28px 24px"><div style="margin-bottom:12px"><span style="color:#a16207;font-size:22px;letter-spacing:2px">★★★★★</span></div><p style="font-size:14px;line-height:1.75;color:rgba(26,21,0,.72);margin-bottom:18px">&#8220;Kaylee is an amazing esthetician! My facial was SO relaxing and rejuvenating. I highly recommend her! She has a calming and kind presence which immediately makes you comfortable and at ease. She is also very knowledgeable with products and ...&#8221;</p><div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:#a16207;opacity:.7">VIA GOOGLE REVIEWS</div></div><div class="rcard animate" style="background:#fffde8;border:1px solid rgba(26,21,0,.1);border-radius:16px;padding:28px 24px"><div style="margin-bottom:12px"><span style="color:#a16207;font-size:22px;letter-spacing:2px">★★★★★</span></div><p style="font-size:14px;line-height:1.75;color:rgba(26,21,0,.72);margin-bottom:18px">&#8220;I honestly had such an amazing experience here. The front desk women were amazing, I met Kat and was serviced by Kaylee. Kat was so helpful and sweet, such a great first face to see when you walk in. Everyone there is clearly extremely know...&#8221;</p><div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:#a16207;opacity:.7">VIA GOOGLE REVIEWS</div></div><div class="rcard animate" style="background:#fffde8;border:1px solid rgba(26,21,0,.1);border-radius:16px;padding:28px 24px"><div style="margin-bottom:12px"><span style="color:#a16207;font-size:22px;letter-spacing:2px">★★★★★</span></div><p style="font-size:14px;line-height:1.75;color:rgba(26,21,0,.72);margin-bottom:18px">&#8220;Samantha was awesome ! I got a hydra facial for the first time . I left feeling amazing . I didnt see the need to wear makeup the rest of the day. She made me feel comfortable. All the ladies are so sweet and welcoming at the Spa. 10 out o...&#8221;</p><div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:#a16207;opacity:.7">VIA GOOGLE REVIEWS</div></div></div></div></section>
+<div id="faq" style="padding:80px 24px;background:#fffde8;border-top:1px solid rgba(26,21,0,.1)">
+  <div style="max-width:680px;margin:0 auto">
+    <span class="eyebrow animate">FAQ</span>
+    <h2 class="section-h2 animate">Common Questions</h2>
+    <div class="faq-item animate" style="animation-delay:0.00s;border-bottom:1px solid rgba(26,21,0,.1)"><button class="faq-q" onclick="gFaq(this)" style="color:#1a1500"><span>Do I need a consultation before treatment?</span><span class="faq-icon" style="color:#a16207">+</span></button><div class="faq-a" style="color:#1a1500">Yes, we always start with a consultation. It's free, no-pressure, and helps us build the right plan for your skin type and goals.</div></div><div class="faq-item animate" style="animation-delay:0.06s;border-bottom:1px solid rgba(26,21,0,.1)"><button class="faq-q" onclick="gFaq(this)" style="color:#1a1500"><span>How long do results last?</span><span class="faq-icon" style="color:#a16207">+</span></button><div class="faq-a" style="color:#1a1500">It depends on the treatment. Botox typically lasts 3–4 months, fillers 6–18 months, and laser results can be long-term with proper maintenance.</div></div><div class="faq-item animate" style="animation-delay:0.12s;border-bottom:1px solid rgba(26,21,0,.1)"><button class="faq-q" onclick="gFaq(this)" style="color:#1a1500"><span>Are the treatments safe?</span><span class="faq-icon" style="color:#a16207">+</span></button><div class="faq-a" style="color:#1a1500">All treatments are FDA-cleared and performed by certified providers. We prioritize safety, natural outcomes, and your comfort throughout.</div></div><div class="faq-item animate" style="animation-delay:0.18s;border-bottom:1px solid rgba(26,21,0,.1)"><button class="faq-q" onclick="gFaq(this)" style="color:#1a1500"><span>Will the treatments look natural?</span><span class="faq-icon" style="color:#a16207">+</span></button><div class="faq-a" style="color:#1a1500">Natural enhancement is our goal. We're conservative by design — you should look refreshed, not overdone.</div></div><div class="faq-item animate" style="animation-delay:0.24s;border-bottom:1px solid rgba(26,21,0,.1)"><button class="faq-q" onclick="gFaq(this)" style="color:#1a1500"><span>How do I book a consultation?</span><span class="faq-icon" style="color:#a16207">+</span></button><div class="faq-a" style="color:#1a1500">Use the form below, call us directly, or text us. We'll confirm your appointment within a few hours.</div></div>
+  </div>
+</div>
+<div id="booking" style="padding:80px 24px;border-top:1px solid rgba(26,21,0,.1)">
+  <div style="max-width:780px;margin:0 auto;text-align:center">
+    <span class="eyebrow animate">Initialize</span>
+    <h2 class="section-h2 animate">Book Your Appointment</h2>
+    <p class="animate section-sub" style="margin:0 auto 44px">Submit the form &mdash; confirmed within 2 hours. Direct line: <a href="tel:9042736286" style="color:#a16207;font-family:'DM Mono',monospace">(904) 273-6286</a></p>
+    <div class="bform animate">
+      <div class="frow">
+        <div class="fg"><label style="color:#a16207">Your Name</label><input type="text" id="fn" placeholder="John Smith" required style="border-color:rgba(26,21,0,.15);background:rgba(26,21,0,.04);color:#1a1500"></div>
+        <div class="fg"><label style="color:#a16207">Phone Number</label><input type="tel" id="fp" placeholder="(555) 000-0000" required style="border-color:rgba(26,21,0,.15);background:rgba(26,21,0,.04);color:#1a1500"></div>
+      </div>
+      <div class="fg"><label style="color:#a16207">Email</label><input type="email" id="fe" placeholder="you@email.com" style="border-color:rgba(26,21,0,.15);background:rgba(26,21,0,.04);color:#1a1500"></div>
+      <div class="fg"><label style="color:#a16207">Service Needed</label>
+        <select id="fs" style="border-color:rgba(26,21,0,.15);background:#fffde8;color:#1a1500">
+          <option value="">Select a service...</option><option>Botox Injections</option><option>Laser Hair Removal</option><option>Chemical Peels</option><option>Microneedling</option><option>IV Vitamin Therapy</option><option>Body Contouring</option><option>Not sure — need consultation</option>
+        </select>
+      </div>
+      <div class="frow">
+        <div class="fg"><label style="color:#a16207">Preferred Date</label><input type="date" id="fd" style="border-color:rgba(26,21,0,.15);background:rgba(26,21,0,.04);color:#1a1500"></div>
+        <div class="fg"><label style="color:#a16207">Preferred Time</label><input type="time" id="ft" style="border-color:rgba(26,21,0,.15);background:rgba(26,21,0,.04);color:#1a1500"></div>
+      </div>
+      <div class="fg"><label style="color:#a16207">Notes</label><textarea id="fn2" rows="3" placeholder="Location, details, or anything else..." style="border-color:rgba(26,21,0,.15);background:rgba(26,21,0,.04);color:#1a1500"></textarea></div>
+      <button class="subtn" onclick="gSubmit()" style="background:#a16207;color:#fffff8">Request Appointment &#8594;</button>
+      <p style="margin-top:14px;font-size:12px;opacity:.45;text-align:center">&#10003; Confirmation within 2 hours &nbsp;&#183;&nbsp; No payment required</p>
+    </div>
+  </div>
+</div>
+<div class="csec" id="contact">
+  <span class="eyebrow">Direct Line</span>
+  <h2 class="section-h2">Call or Text</h2>
+  <a href="tel:9042736286" class="big-phone">(904) 273-6286</a>
+  
+  <p style="font-size:12px;color:rgba(26,21,0,.55);margin-top:14px;font-family:'DM Mono',monospace">// Serving Jacksonville &middot; Fleming Island &middot; Orange Park &middot; Ponte Vedra &middot; St. Augustine</p>
+</div>
+<footer>&copy; 2026 Youthful Medical Spa // Jacksonville // Sample site by GDI Web Solutions // jacksonvilleyouthfulspa.com</footer>
+<script>
+(()=>{
+// 1. Scroll progress bar
+const pb=document.createElement('div');
+pb.style.cssText='position:fixed;top:0;left:0;height:3px;background:#a16207;z-index:10000;width:0;transition:width .1s linear;pointer-events:none;border-radius:0 2px 2px 0';
+document.body.appendChild(pb);
+// 2. Cursor spotlight
+const cs=document.createElement('div');
+cs.className='cursor-spotlight';
+document.body.appendChild(cs);
+let csOn=false;
+document.addEventListener('mousemove',(e)=>{
+  cs.style.left=e.clientX+'px';cs.style.top=e.clientY+'px';
+  if(!csOn){cs.style.opacity='1';csOn=true;}
+},{passive:true});
+document.addEventListener('mouseleave',()=>{cs.style.opacity='0';csOn=false;});
+// 3. Sticky CTA + progress
+const sc=document.getElementById('sticky-cta');
+const hero=document.querySelector('.hero,.hero-wrap');
+let lastSc=false;
+window.addEventListener('scroll',()=>{
+  const pct=(window.scrollY/(document.body.scrollHeight-window.innerHeight))*100;
+  pb.style.width=Math.min(pct,100)+'%';
+  if(sc&&hero){
+    const past=window.scrollY>hero.offsetHeight*.65;
+    if(past!==lastSc){
+      sc.style.opacity=past?'1':'0';
+      sc.style.transform=past?'translateY(0)':'translateY(100%)';
+      sc.style.pointerEvents=past?'auto':'none';
+      lastSc=past;
+    }
+  }
+},{passive:true});
+// 4. Stagger IntersectionObserver
+const obs=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});
+},{threshold:0.08,rootMargin:'0px 0px -24px 0px'});
+document.querySelectorAll('.animate').forEach((el,idx)=>{
+  if(!el.dataset.delay){
+    const sibs=el.parentElement?Array.from(el.parentElement.querySelectorAll(':scope>.animate')):[];
+    const si=sibs.indexOf(el);
+    if(si>0&&!el.style.transitionDelay)el.style.transitionDelay=(si*.07)+'s';
+  }
+  obs.observe(el);
+});
+// 5. Count-up
+function cUp(el){
+  const t=parseInt(el.dataset.target);if(!t||t<2)return;
+  const step=t/(1800/16);let c=0;
+  const iv=setInterval(()=>{c=Math.min(c+step,t);el.textContent=Math.round(c).toLocaleString();if(c>=t)clearInterval(iv);},16);
+}
+document.querySelectorAll('[data-target]').forEach(el=>{
+  const io=new IntersectionObserver(en=>{if(en[0].isIntersecting){cUp(el);io.disconnect();}});io.observe(el);
+});
+// 6. FAQ
+window.gFaq=btn=>{
+  const it=btn.parentElement;const was=it.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
+  if(!was)it.classList.add('open');
+};
+// 7. Magnetic CTAs (desktop only)
+if(window.innerWidth>768){
+  document.querySelectorAll('.hbtn-p,.nbtn,.mag-btn').forEach(btn=>{
+    btn.addEventListener('mousemove',(e)=>{
+      const r=btn.getBoundingClientRect();
+      const x=(e.clientX-r.left-r.width/2)*.2;
+      const y=(e.clientY-r.top-r.height/2)*.2;
+      btn.style.transform=`translate(${x}px,${y}px)`;
+    });
+    btn.addEventListener('mouseleave',()=>{btn.style.transform='';});
+  });
+  // 8. Card tilt
+  document.querySelectorAll('.tilt-card').forEach(card=>{
+    card.addEventListener('mousemove',(e)=>{
+      const r=card.getBoundingClientRect();
+      const x=(e.clientX-r.left)/r.width-.5;
+      const y=(e.clientY-r.top)/r.height-.5;
+      card.style.transform=`perspective(700px) rotateY(${x*7}deg) rotateX(${-y*7}deg) translateZ(6px) scale(1.02)`;
+    });
+    card.addEventListener('mouseleave',()=>{card.style.transform='';});
+  });
+}
+// 9. Parallax
+window.addEventListener('scroll',()=>{
+  const sy=window.scrollY;
+  document.querySelectorAll('[data-parallax]').forEach(el=>{
+    if(!el.closest('.hero'))return;
+    el.style.transform=`translateY(${sy*parseFloat(el.dataset.parallax||'.25')}px)`;
+  });
+},{passive:true});
+// 10. Form submit
+window.gSubmit=()=>{
+  var nm=document.getElementById('fn')?.value||'',
+      ph=document.getElementById('fp')?.value||'',
+      svc=document.getElementById('fs')?.value||'',
+      dt=document.getElementById('fd')?.value||'',
+      tm=document.getElementById('ft')?.value||'',
+      nt=document.getElementById('fn2')?.value||'';
+  if(!nm||!ph||!svc){alert('Please fill in your name, phone, and service needed.');return;}
+  var body='New Booking%0AName: '+encodeURIComponent(nm)+'%0APhone: '+encodeURIComponent(ph)+'%0AService: '+encodeURIComponent(svc)+'%0ADate: '+encodeURIComponent(dt)+'%0ATime: '+encodeURIComponent(tm)+'%0ANotes: '+encodeURIComponent(nt);
+  window.location.href='tel:9042736286';
+  var bf=document.querySelector('.bform');
+  if(bf)bf.innerHTML='<div style="text-align:center;padding:60px 20px"><div style="font-size:56px;margin-bottom:20px">&#10003;</div><h3 style="font-size:22px;margin-bottom:12px;color:#a16207">Request Sent!</h3><p style="opacity:.6">We'll confirm within 2 hours. Call (904) 273-6286 for anything urgent.</p></div>';
+};
+})();
+</script>
+</body></html>
